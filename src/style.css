@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Semantic tokens as RGB channels (see tailwind.config.js).
+ * Source values were picked in OKLCH (neutrals tinted toward hue 255,
+ * accent hue 262) and converted to sRGB. Contrast checked:
+ * text / text-muted / accent / status colors >= 4.5:1 on bg, surface and
+ * surface-2; border-strong >= 3:1 (input boundaries); accent-fg on accent >= 4.5:1.
+ */
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg: 245 247 249;
+    --surface: 252 253 255;
+    --surface-2: 235 239 243;
+    --border: 220 224 229;
+    --border-strong: 135 141 149;
+    --text: 23 29 37;
+    --text-muted: 87 94 104;
+    --accent: 42 93 191;
+    --accent-fg: 249 250 253;
+    --warn: 154 85 5;
+    --danger: 194 40 38;
+    --success: 11 118 67;
+    --score-strong: 11 118 67;
+    --score-mid: 149 94 0;
+    --score-weak: 100 105 112;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --bg: 12 15 18;
+    --surface: 18 21 25;
+    --surface-2: 27 32 37;
+    --border: 41 45 51;
+    --border-strong: 100 105 113;
+    --text: 231 234 237;
+    --text-muted: 165 171 179;
+    --accent: 129 170 247;
+    --accent-fg: 11 15 24;
+    --warn: 238 177 84;
+    --danger: 244 123 116;
+    --success: 95 206 140;
+    --score-strong: 95 206 140;
+    --score-mid: 239 182 86;
+    --score-weak: 160 165 172;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-sm text-text antialiased;
+    accent-color: rgb(var(--accent));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgb(var(--accent) / 0.25);
+  }
+}
+
+@layer components {
+  .field-label {
+    @apply mb-1 block text-meta font-medium text-text;
+  }
+
+  .field-hint {
+    @apply mt-1 block text-xs text-text-muted;
+  }
+
+  .field-error {
+    @apply mt-1 block text-xs font-medium text-danger;
+  }
+
+  .input {
+    @apply block w-full rounded-md border border-border-strong bg-surface px-2.5 py-1.5 text-sm text-text;
+    @apply placeholder:text-text-muted;
+    @apply focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40;
+  }
+
+  .input[aria-invalid='true'] {
+    @apply border-danger focus:border-danger focus:ring-danger/40;
+  }
+
+  .input-num {
+    @apply tabular-nums;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[2rem] select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-3 text-sm font-medium;
+    @apply transition-[background-color,color,transform] duration-150 ease-out;
+    @apply disabled:cursor-not-allowed disabled:opacity-60;
+    @apply motion-safe:active:scale-[0.97];
+  }
+
+  .btn-primary {
+    @apply bg-accent text-accent-fg hover:bg-accent/90;
+  }
+
+  .btn-secondary {
+    @apply border border-border-strong bg-surface text-text hover:bg-surface-2;
+  }
+
+  .btn-ghost {
+    @apply text-text-muted hover:bg-surface-2 hover:text-text;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-text-muted;
+    @apply transition-colors duration-150 hover:bg-surface-2 hover:text-text;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded border border-border bg-surface-2 px-1.5 py-0.5 text-xs text-text;
+  }
+
+  .profile-section {
+    @apply grid scroll-mt-[calc(theme(spacing.header)+1rem)] gap-4 border-t border-border py-6;
+    @apply xl:grid-cols-[13rem_minmax(0,1fr)] xl:gap-8;
+  }
+
+  .section-title {
+    @apply text-sm font-semibold text-text;
+  }
+
+  .section-desc {
+    @apply mt-1 text-meta text-text-muted;
+  }
+}
