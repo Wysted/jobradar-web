@@ -1,6 +1,6 @@
-# Frontend — scraping_jobs
+# jobradar-web
 
-SPA para revisar y priorizar ofertas de trabajo que el backend de [scraping_jobs](https://github.com/Wysted/scrappppp) busca en distintos portales y rankea con IA. Permite ver el puntaje de cada oferta, gestionar su estado, editar tu perfil, configurar la búsqueda y lanzar una nueva búsqueda desde la interfaz.
+SPA para revisar y priorizar ofertas de trabajo que el backend de [jobradar-api](https://github.com/Wysted/jobradar-api) busca en distintos portales y rankea con IA. Permite ver el puntaje de cada oferta, gestionar su estado, editar tu perfil, configurar la búsqueda y lanzar una nueva búsqueda desde la interfaz.
 
 > Este repositorio es solo el frontend. Necesita el backend corriendo (ver [Requisitos](#requisitos)).
 
@@ -56,7 +56,7 @@ Configura qué se busca al presionar «Buscar nuevas»: consultas (hasta 10, de 
 
 - Node.js 18 o superior (Vite 6 lo exige; `package.json` no declara `engines`).
 - [pnpm](https://pnpm.io/) (el proyecto fija `pnpm@9.0.0` en `packageManager`).
-- Backend de scraping_jobs corriendo y accesible desde el navegador: <https://github.com/Wysted/scrappppp>. Como la SPA hace las peticiones directo desde el navegador, el backend debe permitir el origen del frontend (por defecto `http://localhost:5173`) en su configuración de CORS.
+- Backend [jobradar-api](https://github.com/Wysted/jobradar-api) corriendo y accesible desde el navegador. Como la SPA hace las peticiones directo desde el navegador, el backend debe permitir el origen del frontend (por defecto `http://localhost:5173`) en su configuración de CORS.
 
 ## Instalación y ejecución
 
